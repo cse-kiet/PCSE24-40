@@ -1,0 +1,31 @@
+How to Execute Code?
+
+
+First we have to open the ZenUi file from where our interface will open then we will click on the start button then it will start running and whatever the function we are going to search for it will display the result regarding that function.
+
+Here is the command list for your reference:
+
+Zen: Introduction (Just Say "zen")
+	1) How are you?
+	2) Youtube Search & Automation
+	3) Google Search
+	4) Can open a particular website just say "open __ website" or just say launch
+	5) Spotify 
+	6) Wikipedia
+	7) WhatsApp Automation
+	8) Screenshot
+	9) Google Maps
+       10) Repeat my words
+       11) Live location
+       12) Dictionary
+       13) Play Music
+       14) Alarm
+       15) Video Downloader
+       16) Remember that 
+       17) Temperature
+       18) Check the Internet Speed(restrict by kiet)
+       19) Asking any query 
+       20) Translator
+
+Zen: Leaves
+	  "You may Leave or bye"
