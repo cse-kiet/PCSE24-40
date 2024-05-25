@@ -8,7 +8,9 @@ import os
 import pyautogui 
 import keyboard
 import pyjokes
-# from PyDictionary import PyDictionary as Diction
+import requests
+import speedtest
+from PyDictionary import PyDictionary as Diction
 import datetime
 from playsound import playsound
 from tkinter import Label
@@ -21,10 +23,12 @@ from googletrans import Translator
 import requests
 from bs4 import BeautifulSoup
 from pywikihow import search_wikihow
+from gtts import gTTS
+from googletrans import Translator
 
 Assistant=pyttsx3.init('sapi5')
 voices=Assistant.getProperty('voices')
-print(voices)
+# print(voices)
 Assistant.setProperty('voices',voices[0].id)
 Assistant.setProperty('rate',150)
 def Speak(audio):
@@ -39,7 +43,6 @@ def takecommand():
     with sr.Microphone(device_index=0) as source:
         print("Listening............")
         command.pause_threshold = 1
-        # audio = command.listen(source,timeout=5,phrase_time_limit=5)
         audio = command.listen(source, timeout=5, phrase_time_limit=5)
 
 
@@ -50,6 +53,7 @@ def takecommand():
 
         except:
             return "none"
+            raise
         return query.lower()
 
 def taskexecution():
@@ -62,7 +66,7 @@ def taskexecution():
        Speak("Tell me the name of the Person!")
        name=takecommand()
        
-       if 'deepanshu' in name:
+       if 'bipin' in name:
            Speak("Tell me the Message!")
            msg=takecommand()
            Speak("Tell Me the Time Sir!")
@@ -70,9 +74,9 @@ def taskexecution():
            hour=int(takecommand())
            Speak("Time in Minutes!")
            min=int(takecommand())
-           pywhatkit.sendwhatmsg("+919870808662",msg,hour,min,2)
+           pywhatkit.sendwhatmsg("+919711067117",msg,hour,min,2)
            Speak("Ok sir,Sending Whatsapp Message !")
-       elif 'aryan' in name:
+       elif 'abhishek' in name:
            Speak("Tell me the Message!")
            msg=takecommand()
            Speak("Tell Me the Time Sir!")
@@ -80,7 +84,7 @@ def taskexecution():
            hour=int(takecommand())
            Speak("Time in Minutes!")
            min=int(takecommand())
-           pywhatkit.sendwhatmsg("+919140289864",msg,hour,min,2)
+           pywhatkit.sendwhatmsg("+918507681167",msg,hour,min,2)
            Speak("Ok sir,Sending Whatsapp Message !")
        elif 'rishika' in name:
            Speak("Tell me the Message!")
@@ -92,7 +96,7 @@ def taskexecution():
            min=int(takecommand())
            pywhatkit.sendwhatmsg("+918219714336",msg,hour,min,2)
            Speak("Ok sir,Sending Whatsapp Message !")
-       elif 'kushagra' in name:
+       elif 'ashutosh' in name:
            Speak("Tell me the Message!")
            msg=takecommand()
            Speak("Tell Me the Time Sir!")
@@ -100,9 +104,9 @@ def taskexecution():
            hour=int(takecommand())
            Speak("Time in Minutes!")
            min=int(takecommand())
-           pywhatkit.sendwhatmsg("+918887122744",msg,hour,min,2)
+           pywhatkit.sendwhatmsg("+918707034908",msg,hour,min,2)
            Speak("Ok sir,Sending Whatsapp Message !")
-       elif 'sahil' in name:
+       elif 'ayush' in name:
            Speak("Tell me the Message!")
            msg=takecommand()
            Speak("Tell Me the Time Sir!")
@@ -110,11 +114,11 @@ def taskexecution():
            hour=int(takecommand())
            Speak("Time in Minutes!")
            min=int(takecommand())
-           pywhatkit.sendwhatmsg("+919044217764",msg,hour,min,2)
+           pywhatkit.sendwhatmsg("+918979882396",msg,hour,min,2)
            Speak("Ok sir,Sending Whatsapp Message !")
        elif 'sajal' in name:
            Speak("Tell me the Message!")
-           msg=takecommand()
+           msg=TakeHindi()
            Speak("Tell Me the Time Sir!")
            Speak("Time in Hour!")
            hour=int(takecommand())
@@ -132,8 +136,7 @@ def taskexecution():
            min=int(takecommand())
            pywhatkit.sendwhatmsg("+919548458448",msg,hour,min,2)
            Speak("Ok sir,Sending Whatsapp Message !")
-
-       elif 'shivali mam' in name:
+       elif 'shivali' in name:
            Speak("Tell me the Message!")
            msg=takecommand()
            Speak("Tell Me the Time Sir!")
@@ -195,26 +198,40 @@ def taskexecution():
      Speak("Done Sir!")                   
 
  def Dict():
-     Speak("Activating Dictionary!")
-     Speak("Tell Me the Problem!")
-     probl=takecommand()
-     if 'meaning' in probl:
-         probl=probl.replace("What is the","")
-         probl=probl.replace("zen","")
-         probl=probl.replace("of","")
-         probl=probl.replace("meaning","")
-         result= Diction.meaning(probl)
-         Speak(f"The Meaning for{probl} is {result}")
-         Speak("Exited Dictionary")
+    Speak("Activating Dictionary!")
+    Speak("Tell Me the Problem!")
+    probl = takecommand()
+    
+    if 'meaning' in probl:
+        probl = probl.replace("what is the", "").replace("zen", "").replace("of", "").replace("meaning", "").strip()
+        url = f"https://api.dictionaryapi.dev/api/v2/entries/en/{probl}"
+        response = requests.get(url)
+        if response.status_code == 200:
+            data = response.json()
+            if data:
+                meanings = data[0]['meanings']
+                if meanings:
+                    Speak(f"The Meaning for {probl} is:")
+                    for meaning in meanings:
+                        definitions = meaning['definitions']
+                        for definition in definitions:
+                            Speak(f"- {definition['definition']}")
+                else:
+                    Speak(f"Sorry, I couldn't find the meaning for {probl}")
+            else:
+                Speak(f"Sorry, I couldn't find the meaning for {probl}")
+        else:
+            Speak(f"Sorry, I couldn't find the meaning for {probl}")
+        Speak("Exited Dictionary")
 
  def screenshot():
      Speak("Ok Sir, What Should I Name That File?")
      path= takecommand()
      path1name=path+".png"
-     path1='C:\Python 3.9\Scripts\Jarvis-Project\Screenshot\\'+ path1name
+     path1='C:\\Users\\saksham.pandit\\Downloads\\PCSE24-40-master\\PCSE24-40-master\\Screenshot\\'+ path1name
      ss=pyautogui.screenshot()
      ss.save(path1)
-     os.startfile("C:\Python 3.9\Scripts\Jarvis-Project\Screenshot")
+     os.startfile("C:\\Users\\saksham.pandit\\Downloads\\PCSE24-40-master\\PCSE24-40-master\\Screenshot")
      Speak("Here is Your ScreenShot!")  
 
  def TakeHindi():
@@ -226,20 +243,32 @@ def taskexecution():
 
         try: 
             print("Recognizing......")
-            query = command.recognize_google(audio,language='en-in')
+            query = command.recognize_google(audio,language='hi-IN')
             print(f"You Said : {query}")
-
-        except:
+            return query.lower()
+        except sr.UnknownValueError:
+            print("Sorry, I didn't get that. Could you please repeat?")
             return "none"
-        return query.lower()
+        except sr.RequestError as e:
+            print(f"Error: {str(e)}")
+            return "none"
 
  def Tran():
-     Speak("Tell me The Line!")
-     line=TakeHindi()       
-     translate=Translator()
-     result=translate.translate(line)
-     Text=result.text
-     Speak(Text)
+    #  Speak("Tell me The Line!")
+    #  line=TakeHindi()       
+    #  translate=Translator()
+    #  result=translate.translate(line)
+    #  text=result.text
+    #  Speak(text)
+    Speak("Tell me The Line!")
+    line = TakeHindi()
+    if line != "none":
+        translator = Translator()
+        result = translator.translate(line, src='hi', dest='en')
+        translated_text = result.text
+        Speak(translated_text)
+    else:
+        Speak("Sorry, I couldn't understand what you said.")
 
  def Temp():
      search="temperature in ghaziabad"
@@ -250,9 +279,8 @@ def taskexecution():
      Speak(f"The Temprature Outside is {temperature}")
 
  def SpeedTest():
-     import speedtest
      Speak("Checking speed...........")
-     speed=speedtest.Speedtest()
+     speed=speedtest.Speedtest() 
      downloading=speed.download()
      correctDown= int(downloading/800000)
      uploading=speed.upload()
@@ -265,7 +293,38 @@ def taskexecution():
          Speak(f"The Downloading Speed is {correctDown} mbps")
      else:
          Speak(f"The Downloading is {correctDown} and The Uploading Speed is {correctUpload} mbps")       
+ 
+ def ChatGPT_conversation(prompt):
+    api_key = os.getenv("OPENAI_API_KEY")
+    if not api_key:
+        raise ValueError("OpenAI API key is not set.")
+    headers = {
+        'Content-Type': 'application/json',
+        'Authorization': f'Bearer {api_key}',
+    }
+    data = {
+        "model": "text-davinci-003",
+        "prompt": prompt,
+        "max_tokens": 150,
+        "n": 1,
+        "stop": None,
+        "temperature": 0.7,
+    }
+    response = requests.post('https://api.openai.com/v1/completions', headers=headers, json=data)
+    response_json = response.json()
+    message = response_json['choices'][0]['text'].strip()
+    return message
 
+ def ChatGPTAssistant():
+    Speak("This is Sensei reporting sir, What can I do for you")
+    query = TakeHindi()
+    
+    if query != "none":
+        response = ChatGPT_conversation(query)
+        Speak(response)
+    else:
+        Speak("Sorry, I couldn't understand what you said.")
+ 
  while True:
       
    query=takecommand()
@@ -301,7 +360,8 @@ def taskexecution():
                Speak(result)
                Speak("Done Sir")
            except:
-               Speak("No Data Available!")    
+               Speak("No Data Available!")
+               raise    
    elif 'website' in query:
            Speak("Ok sir,Launching....")
            query=query.replace("zen","")
@@ -368,7 +428,7 @@ def taskexecution():
        Speak(f"You Said:{jj}")
    elif 'my location' in query:
        Speak("Ok Sir, Wait a Second")
-       webbrowser.open('https://www.google.com/maps/@27.224768,77.9994067,18z')
+       webbrowser.open('https://www.google.co.in/maps/@28.75198,77.4966311,17z?')
    elif 'dictionary' in query:
        Dict()
    elif 'play music' in query:
@@ -439,5 +499,6 @@ def taskexecution():
        how_to_func[0].print()
        Speak(how_to_func[0].print())
        Speak(how_to_func[0].summary)
-
-taskexecution()    
+   elif 'chat with sensei' in query:
+        ChatGPTAssistant()  
+  

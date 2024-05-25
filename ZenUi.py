@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 
 # Form implementation generated from reading ui file 'JarvisUi.ui'
 #
@@ -9,10 +8,14 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from zen import Speak,taskexecution
 
 
 class Ui_MainWindow(object):
+    def clickMe(self):
+        taskexecution()
     def setupUi(self, MainWindow):
+        
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1366, 720)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
@@ -20,7 +23,7 @@ class Ui_MainWindow(object):
         self.bg_1 = QtWidgets.QLabel(self.centralwidget)
         self.bg_1.setGeometry(QtCore.QRect(-470, -150, 1911, 1071))
         self.bg_1.setText("")
-        self.bg_1.setPixmap(QtGui.QPixmap("C:\AI-Assistant\Python 3.9\Scripts\AI Assistant Project\G.U.I Material\B.G\Black_Template.jpg"))
+        self.bg_1.setPixmap(QtGui.QPixmap("C:\\AI-Assistant\\Python 3.9\\Scripts\\AI Assistant Project\\G.U.I Material\\B.G\\Black_Template.jpg"))
         self.bg_1.setScaledContents(True)
         self.bg_1.setObjectName("bg_1")
         self.bg_2 = QtWidgets.QLabel(self.centralwidget)
@@ -32,9 +35,12 @@ class Ui_MainWindow(object):
         self.Gif_1 = QtWidgets.QLabel(self.centralwidget)
         self.Gif_1.setGeometry(QtCore.QRect(20, 30, 401, 341))
         self.Gif_1.setText("")
-        self.Gif_1.setPixmap(QtGui.QPixmap("C:\AI-Assistant\Python 3.9\Scripts\AI Assistant Project\G.U.I Material\B.G\Iron_template_1.gif"))
+        # self.Gif_1.setPixmap(QtGui.QPixmap("C:\\AI-Assistant\\Python 3.9\\Scripts\\AI Assistant Project\\G.U.I Material\\B.G\\Iron_template_1.gif"))
         self.Gif_1.setScaledContents(True)
         self.Gif_1.setObjectName("Gif_1")
+        self.movie_1 = QtGui.QMovie("C:\\AI-Assistant\\Python 3.9\\Scripts\\AI Assistant Project\\G.U.I Material\\B.G\\Iron_template_1.gif")
+        self.Gif_1.setMovie(self.movie_1)
+        self.movie_1.start()
 
 
         self.bg_3 = QtWidgets.QLabel(self.centralwidget)
@@ -46,17 +52,23 @@ class Ui_MainWindow(object):
         self.Gif_2 = QtWidgets.QLabel(self.centralwidget)
         self.Gif_2.setGeometry(QtCore.QRect(450, 30, 371, 341))
         self.Gif_2.setText("")
-        self.Gif_2.setPixmap(QtGui.QPixmap("C:\AI-Assistant\Python 3.9\Scripts\AI Assistant Project\G.U.I Material\ExtraGui\live.gif"))
+        # self.Gif_2.setPixmap(QtGui.QPixmap("C:\\AI-Assistant\\Python 3.9\\Scripts\\AI Assistant Project\\G.U.I Material\\ExtraGui\\live.gif"))
         self.Gif_2.setScaledContents(True)
         self.Gif_2.setObjectName("Gif_2")
+        self.movie_2 = QtGui.QMovie("C:\\AI-Assistant\\Python 3.9\\Scripts\\AI Assistant Project\\G.U.I Material\\ExtraGui\\live.gif")
+        self.Gif_2.setMovie(self.movie_2)
+        self.movie_2.start()
 
 
         self.Gif_3 = QtWidgets.QLabel(self.centralwidget)
         self.Gif_3.setGeometry(QtCore.QRect(20, 340, 481, 351))
         self.Gif_3.setText("")
-        self.Gif_3.setPixmap(QtGui.QPixmap("C:\AI-Assistant\Python 3.9\Scripts\AI Assistant Project\G.U.I Material\VoiceReg/__1.gif"))
+        # self.Gif_3.setPixmap(QtGui.QPixmap("C:\\AI-Assistant\\Python 3.9\\Scripts\\AI Assistant Project\\G.U.I Material\\VoiceReg\\__1.gif"))
         self.Gif_3.setScaledContents(True)
         self.Gif_3.setObjectName("Gif_3")
+        self.movie_3 = QtGui.QMovie("C:\\AI-Assistant\\Python 3.9\\Scripts\\AI Assistant Project\\G.U.I Material\\VoiceReg\\__1.gif")
+        self.Gif_3.setMovie(self.movie_3)
+        self.movie_3.start()
         self.bg_4 = QtWidgets.QLabel(self.centralwidget)
         self.bg_4.setGeometry(QtCore.QRect(840, 20, 391, 281))
         self.bg_4.setStyleSheet("background-color: rgb(0, 255, 255);\n"
@@ -66,9 +78,12 @@ class Ui_MainWindow(object):
         self.Gif_4 = QtWidgets.QLabel(self.centralwidget)
         self.Gif_4.setGeometry(QtCore.QRect(850, 30, 371, 261))
         self.Gif_4.setText("")
-        self.Gif_4.setPixmap(QtGui.QPixmap("C:\AI-Assistant\Python 3.9\Scripts\AI Assistant Project\G.U.I Material\ExtraGui/Earth.gif"))
+        # self.Gif_4.setPixmap(QtGui.QPixmap("C:\\AI-Assistant\\Python 3.9\\Scripts\\AI Assistant Project\\G.U.I Material\\ExtraGui\\Earth.gif"))
         self.Gif_4.setScaledContents(True)
         self.Gif_4.setObjectName("Gif_4")
+        self.movie_4 = QtGui.QMovie("C:\\AI-Assistant\\Python 3.9\\Scripts\\AI Assistant Project\\G.U.I Material\\ExtraGui\\Earth.gif")
+        self.Gif_4.setMovie(self.movie_4)
+        self.movie_4.start()
 
         
         self.Text_Time = QtWidgets.QTextBrowser(self.centralwidget)
@@ -79,7 +94,7 @@ class Ui_MainWindow(object):
         self.bg_5 = QtWidgets.QLabel(self.centralwidget)
         self.bg_5.setGeometry(QtCore.QRect(990, 590, 341, 91))
         self.bg_5.setText("")
-        self.bg_5.setPixmap(QtGui.QPixmap("C:\AI-Assistant\Python 3.9\Scripts\AI Assistant Project\G.U.I Material\B.G/gyhf.jpg"))
+        self.bg_5.setPixmap(QtGui.QPixmap("C:\\AI-Assistant\\Python 3.9\\Scripts\\AI Assistant Project\\G.U.I Material\\B.G\\gyhf.jpg"))
         self.bg_5.setScaledContents(True)
         self.bg_5.setObjectName("bg_5")
         self.bg_6 = QtWidgets.QLabel(self.centralwidget)
@@ -94,6 +109,7 @@ class Ui_MainWindow(object):
 "color: rgb(0,255,255);\n"
 "font: 24pt \"Nirmala UI\";")
         self.pushButton_start.setObjectName("pushButton_start")
+        self.pushButton_start.clicked.connect(self.clickMe)
         self.pushButton_exit = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_exit.setGeometry(QtCore.QRect(880, 380, 341, 41))
         self.pushButton_exit.setStyleSheet("background-color:rgb(0,0,0);\n"
@@ -144,6 +160,8 @@ class Ui_MainWindow(object):
         self.pushButton_youtube.setText(_translate("MainWindow", "Youtube"))
         self.pushButton_chrome.setText(_translate("MainWindow", "Chrome"))
         self.pushButton_whatsapp.setText(_translate("MainWindow", "Whatsapp"))
+
+
 
 
 if __name__ == "__main__":
