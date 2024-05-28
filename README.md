@@ -1,4 +1,4 @@
-Hello there!!
+Hello there!!<br>
 <img src="https://github.com/Anmol-Baranwal/Cool-GIFs-For-GitHub/assets/74038190/9d0fd0c4-5c7f-4122-b884-64a1e1685d2d" padding-left="50" width=300 align="right">
 Welcome to our repository let me introduce you to the authors and the faculty of this work.
 <br>
